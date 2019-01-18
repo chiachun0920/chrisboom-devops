@@ -1,0 +1,20 @@
+version: '3'
+services: 
+  cv:
+    image: "chiachun0920/cv"
+    container_name: "cv"
+    ports:
+      - "8888:80"
+    networks:
+      - backend
+  iris_cv:
+    image: "chiachun0920/iris_cv"
+    container_name: "iris_cv"
+    ports:
+      - "8889:80"    
+    networks:
+      - backend
+networks:
+  backend: 
+    external:
+      name: net

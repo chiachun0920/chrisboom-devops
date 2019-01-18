@@ -1,0 +1,28 @@
+version: '3'
+services: 
+  mongo:
+    image: "mongo"
+    container_name: "mongo"
+    ports:
+      - "27017:27017"
+    volumes:
+      - ~/data/db:/data/db
+    networks:
+      - backend
+  parse-server:
+    image: "chiachun0920/parse-server"
+    container_name: "parse-server"
+    environment:
+      PARSE_SERVER_APPLICATION_ID: chrisboom
+      PARSE_SERVER_MASTER_KEY: chrisboom
+      PARSE_SERVER_DATABASE_URI: mongodb://mongo/chrisboom
+    ports:
+      - "1337:1337"
+    depends_on:
+      - mongo
+    networks:
+      - backend
+networks:
+  backend: 
+    external:
+      name: net

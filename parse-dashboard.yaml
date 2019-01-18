@@ -1,0 +1,21 @@
+version: '3'
+services:
+  parse-server-dashboard:
+    image: "chiachun0920/parse-dashboard"
+    container_name: "parse-dashboard"
+    environment:
+      PARSE_DASHBOARD_MASTER_KEY: chrisboom
+      PARSE_DASHBOARD_SERVER_URL: http://parse-api.chrisboom.com/
+      PARSE_DASHBOARD_APP_ID: chrisboom
+      PARSE_DASHBOARD_APP_NAME: chrisboom
+      PARSE_DASHBOARD_USER_ID: admin
+      PARSE_DASHBOARD_USER_PASSWORD: admin
+      PARSE_DASHBOARD_ALLOW_INSECURE_HTTP: "true"
+    ports:
+      - "4040:4040"
+    networks:
+      - backend
+networks:
+  backend:
+    external: 
+      name: net

@@ -1,0 +1,15 @@
+version: '3'
+services: 
+  nginx:
+    image: "nginx"
+    container_name: "proxy"
+    ports:
+      - "80:80"
+    volumes:
+      - ~/chrisboom/chrisboom-devops/nginx:/etc/nginx
+    networks:
+      - backend
+networks:
+  backend: 
+    external:
+      name: net
